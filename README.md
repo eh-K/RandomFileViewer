@@ -3,7 +3,7 @@ Simple bat file that will open, view, or play any random file within a directory
 
 Place the file in your directory and simply open.
 
-/// Current Features \\\
+### Current Features ###
 
 
 Delete - Permanently delete files.
@@ -16,7 +16,7 @@ Reroll - Simply press ENTER to randomly choose your next file.
 
 
 
-///  Credit  \\\
+###  Credit  ###
 Credit to 'chinagreenelvis' from techguy.org. for the original 1.0 version. 
 
 https://www.techguy.org/threads/solved-get-random-folder-from-directory-using-batch.1094849/
