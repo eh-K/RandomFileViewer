@@ -3,7 +3,8 @@ Following v1.4, keybinds and terminology have changed completely. If you are usi
 ### v1.4 - Beyond ###
 
 These are the current keybinds. Each key or phrase must have a phrase if you wish to edit them yourself.
-bind_randomizer is blank by default since I just press ENTER to continue but you add convient keys.
+
+bind_randomizer is blank by default since I just press ENTER to continue but you can add convient keys.
 
 set bind_delete=d del delete
 
