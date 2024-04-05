@@ -10,7 +10,7 @@ Delete - Permanently delete files.
 
 View - Opens the file again if you had closed it.
 
-Refresh - Refreshes directory if you have deleted numerous files.
+Refresh - Refreshes directory if you have added new files.
 
 Reroll - Simply press ENTER to randomly choose your next file.
 
