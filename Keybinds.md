@@ -15,6 +15,8 @@ set bind_randomizer=
 
 
 
+
+
 ### Pre-v1.4 ###
 
 D/DEL/DELETE = Permanently delete.
