@@ -6,8 +6,11 @@ These are the current keybinds. Each key or phrase must have a phrase if you wis
 bind_randomizer is blank by default since I just press ENTER to continue but you add convient keys.
 
 set bind_delete=d del delete
+
 set bind_review=v review
+
 set bind_reload=r reload
+
 set bind_randomizer=
 
 
@@ -15,6 +18,9 @@ set bind_randomizer=
 ### Pre-v1.4 ###
 
 D/DEL/DELETE = Permanently delete.
+
 V/VIEW = Open file again.
+
 R/REFRESH = Update directory if you added new files.
+
 ENTER = Reroll for new file.
