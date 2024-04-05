@@ -8,11 +8,13 @@ Place the file in your directory and simply open.
 
 Delete - Permanently delete files.
 
-View - Opens the file again if you had closed it.
+Review - Opens the file again if you had closed it.
 
-Refresh - Refreshes directory if you have added new files.
+Reload - Refreshes directory if you have added new files.
 
-Reroll - Simply press ENTER to randomly choose your next file.
+Randomize - Simply press ENTER to randomly choose your next file.
+
+Custom Keybinds.
 
 
 
