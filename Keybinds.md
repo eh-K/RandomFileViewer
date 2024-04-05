@@ -1,4 +1,4 @@
-Following v1.4, keybinds and some terminology has changed completely. If you are using v1.3.1 or older, please go to Pre-v1.4 section.
+Following v1.4, keybinds and terminology have changed completely. If you are using v1.3.1 or older, please go to Pre-v1.4 section.
 
 ### v1.4 - Beyond ###
 
