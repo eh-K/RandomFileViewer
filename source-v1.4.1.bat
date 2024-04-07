@@ -75,7 +75,7 @@ Color %color_code%
 CLS
 Echo.
 Echo (Step 3/4) - Randomizer shuffling... Please wait a moment.
-echo %timeout% | findstr %timeout_max% >nul && (goto Error-Timed Out) || (echo Attempt %timeout%/%timeout_max% till Timeout...)
+echo %timeout% | findstr %timeout_max% >nul && (goto Error-TimedOut) || (echo Attempt %timeout%/%timeout_max% till Timeout...)
 ::timeout /t 1 > nul
 Set /a timeout+=1
 Set /a randN=%random% %% %count% +1
@@ -159,7 +159,7 @@ echo Program will close upon continuing
 Pause
 exit
 
-:Error-Timed Out
+:Error-TimedOut
 CLS
 Color C
 echo ###  ERROR  ###
