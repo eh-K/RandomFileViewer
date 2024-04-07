@@ -11,7 +11,7 @@ Directory where RandomFilePicker is located:
       mkdir "%~dp0" > NUL 2>&1
 or
 
-Specific directory from a different location.
+Specific directory from a different location:
 
       Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
       ::mkdir "%~dp0" > NUL 2>&1
@@ -27,7 +27,39 @@ Each key and phrase must have a space between them.
       set bind_reload=r reload
       set bind_randomizer=
 
+### Search Criteria  ###
+Following v1.4.1, you can choose what file types you want to open.
 
+      set search_mode=1
+      ::1 = Images
+      ::2 = Videos
+      ::3 = Music
+      ::4 = Images, Videos, Music
+      ::5 = Every possible file type (CAUTION: Will literally open anything)
+
+Here is list of search criteria types:
+
+      ::Image file types
+            set file_type1.1=.png
+            set file_type1.2=.jpg
+            set file_type1.3=.jpeg
+            set file_type1.4=.webp
+      ::Video file types
+            set file_type2.1=.mp4
+            set file_type2.2=.mkv
+            set file_type2.3=.mov
+            set file_type2.4=.webm
+      ::Music file types
+            set file_type3.1=.mp3
+            set file_type3.2=.m4a
+            set file_type3.3=.wav
+            set file_type3.4=.wma
+
+### Timeout Search Limit  ###
+Following v1.4.1, you can set how many times you want the Randomizer to shuffle.
+Default shuffle count: 250
+
+      set timeout_max=250
 
 ### Color Coding ###
 Following v1.4, you can set what color you want your console to have.
