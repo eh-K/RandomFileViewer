@@ -12,7 +12,7 @@ Place the file in your directory and simply open.
     Custom Search Criteria
 
 ### Want a simpler version that strictly opens media content? ###
-[RandomFilePicker Vue]([https://pages.github.com/](https://github.com/bandito52/RandomFilePicker/releases/tag/Vue)) has you covered!
+[RandomFilePicker Vue]([https://pages.github.com/](https://github.com/bandito52/RandomFilePicker/releases/tag/Vue)). has you covered!
 
 
 ### Future Plans ###
