@@ -3,8 +3,18 @@ Following v1.4, there is now a config section at the top of the batch file if yo
 ### Directory ###
 v1.3 introduced the need for no directory but you can still set one if you decide to run the file elsewhere.
 
-Simply remove the '::' by 'Set directory' and set it.
-Add '::' behind 'mkdir "%~dp0"' (Ex: ::mkdir "%~dp0")
+Simply swap which you want:
+
+Directory where RandomFilePicker is located:
+
+      ::Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
+      mkdir "%~dp0" > NUL 2>&1
+or
+
+Specific directory from a different location.
+
+      Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
+      ::mkdir "%~dp0" > NUL 2>&1
 
 
 
