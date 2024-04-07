@@ -12,10 +12,10 @@ Add '::' behind 'mkdir "%~dp0"' (Ex: ::mkdir "%~dp0")
 Following v1.4, you can set custom keys and phrases to your actions.
 Each key and phrase must have a space between them.
 
-   set bind_delete=d del delete
-   set bind_review=v review
-   set bind_reload=r reload
-   set bind_randomizer=
+      set bind_delete=d del delete
+      set bind_review=v review
+      set bind_reload=r reload
+      set bind_randomizer=
 
 
 
