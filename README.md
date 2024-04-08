@@ -18,3 +18,11 @@ Place the file in your directory and simply open.
 ### Future Plans ###
 Plan to keep optimizing as I have recently gotten back into programming. 
 Would like to have this in some form of a GUI and different language that opens files in-window and add quicker key functionality. 
+
+
+### Credits ###
+chinagreenelvis, whoever they may be, started this rabbit hole with sharing his code for what I call v1.0.
+
+While I was searching for a way to randomly open any file in a folder, I found a link to his help-post.
+
+https://www.techguy.org/threads/solved-get-random-folder-from-directory-using-batch.1094849/
