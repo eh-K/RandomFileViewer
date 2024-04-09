@@ -1,4 +1,5 @@
-Following v1.4, there is now a config section at the top of the batch file if you decide to edit it.
+Following v1.4, there is a config section at the top of the file if you decide to edit it.
+
 To edit, you must open the bat file with Notepad or any text editor.
 
 ### Directory ###
