@@ -14,6 +14,8 @@ Place the file in your directory and simply open.
 ### Want a simpler version that strictly opens media content? ###
 [RandomFilePicker - Vue](https://github.com/bandito52/RandomFilePicker/releases/tag/Vue) has you covered!
 
+No options or menus.
+
 
 ### Future Plans ###
 Plan to keep optimizing as I have recently gotten back into programming. 
