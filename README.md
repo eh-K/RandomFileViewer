@@ -1,6 +1,8 @@
 # RandomFilePicker
 Simple bat file that will open, view, or play any random file within a directory. No directory setup required!
 
+BY DEFAULT WILL OPEN ONLY MEDIA CONTENT, EDIT CONFIG WITHIN FILE TO [CHANGE FILTER here](https://github.com/bandito52/RandomFilePicker/blob/main/Configs.md)
+
 Place the file in your directory and simply open.
 
 ### Current Features ###
