@@ -32,7 +32,7 @@ Each key and phrase must have a space between them.
 ### Search Criteria  ###
 Following v1.4.1, you can choose what file types you want to open.
 
-      set search_mode=1
+      set search_mode=4
       ::1 = Images
       ::2 = Videos
       ::3 = Music
