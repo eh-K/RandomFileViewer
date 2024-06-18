@@ -11,7 +11,8 @@ Place the file in your directory and simply open.
     Reload - Refreshes directory if you have added new files.
     Randomize - Simply press ENTER to randomly choose your next file.
     Custom Keybinds.
-    Custom Search Criteria
+    Custom Search Criteria.
+    Custom Filters to block executables/scripts/keywords.
 
 ### Want a simpler version that strictly opens media content? ###
 [RandomFilePicker - Vue](https://github.com/bandito52/RandomFilePicker/releases/tag/Vue) has you covered!
