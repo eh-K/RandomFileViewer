@@ -20,7 +20,7 @@ Title %version%
 	set bind_randomizer=
 	
 	::Toggles question on what Search Mode you want set. Default = 0-disabled, 1-enabled.
-	set manual_mode=1
+	set manual_mode=0
 	
 	::SET YOUR PREFERRED COLOR - List is on the documentation file on home page.
 	set color_code=3
