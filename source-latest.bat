@@ -107,7 +107,7 @@ goto Review
 ::Step 3
 :Review
 Echo %filename% | find /v "%file_all%" >nul && (goto Randomizer)
-Echo %filename% | findstr /i "%file_invalid%" >nul && (goto Error-InvalidFile)
+Echo %filename% | findstr /i "%file_filter%" >nul && (goto Error-InvalidFile)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
 CLS
 Start "" "%filename%"
