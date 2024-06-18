@@ -1,108 +1,114 @@
 @Echo Off
-Title RandomFilePicker - Vue
+set version=RandomFilePicker - Vue
+Title %version%
 
 
 ::####  CONFIG SECTION  ####
-
-::CAN MANUALLY SET DIRECTORY HERE- Comment the other and vice versa
-::Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
-mkdir "%~dp0" > NUL 2>&1
-::KEY BINDS - Edit these lists to your liking
-
-set bind_randomizer=1
-set bind_reload=2
-
-::SET YOUR PREFERRED COLOR - List is on the documentation file on home page.
-set color_code= 3
-
-::This determines how many times you want the Randomizer to shuffle. Default = 250
-Set timeout_max=250
-
-::SET YOUR SEARCH CRITERIA
-set search_mode=4
-::1 = Images
-::2 = Videos
-::3 = Music
-::4 = Images, Videos, Music
-::5 = Every possible file type (CAUTION: Will literally open anything)
-
-
-::Image file types
-set file_type1.1=.png
-set file_type1.2=.jpg
-set file_type1.3=.jpeg
-set file_type1.4=.webp
-::Video file types
-set file_type2.1=.mp4
-set file_type2.2=.mkv
-set file_type2.3=.mov
-set file_type2.4=.webm
-::Music file types
-set file_type3.1=.mp3
-set file_type3.2=.m4a
-set file_type3.3=.wav
-set file_type3.4=.wma
+	
+	::CAN MANUALLY SET DIRECTORY HERE- Comment the other and vice versa
+	
+	::Option 1 - Viewing away from directory.
+	::Set directory="C:\Users\Echox\OneDrive\Pictures\All_Wallpapers"
+	
+	::Option 2 - Viewing within same folder/subfolders.
+	mkdir "%~dp0" > NUL 2>&1
+	
+	::KEY BINDS - The script can recognize if you type part of a word so caution with mistyping.
+	set bind_randomizer=1
+	set bind_reload=2
+	
+	::Toggles question on what Search Mode you want set. Default = 0-disabled, 1-enabled.
+	set manual_mode=0
+	
+	::SET YOUR PREFERRED COLOR - List is on the documentation file on home page.
+	set color_code=3
+	
+	::Determines how many times you want the Randomizer to shuffle. Default = 250
+	Set timeout_max=250
+	
+	::SET YOUR SEARCH CRITERIA
+	set search_mode=4
+	::1 = Images
+	::2 = Videos
+	::3 = Music
+	::4 = Images, Videos, Music
+	::5 = Your preferred file type (CAUTION: Will literally open anything)
+	
+	::FILE TYPES - Add any file extensions you may find useful.
+	::Image file types
+	set file_image=.png .jpg .jpeg .webp
+	::Video file types
+	set file_video=.mp4 .mkv .mov .webm
+	::Music file types
+	set file_music=.mp3 .m4a .wav .wma
+	::Invalid file types or keywords to save you headache on avoiding certain files. Can be left empty.
+	set file_filter=.exe
+	
 ::####  END OF CONFIG  ####
 
 
 
-Goto Start
+::####  START OF SCRIPT  ####
+set file_all=.
+set file_media=%file_image% %file_video% %file_music%
+Color %color_code%
+Echo %manual_mode% | findstr "1" >nul && (timeout 2 >nul)
+Echo %manual_mode% | findstr "1" >nul && (goto ManualQuestion) || (goto Start)
+
 
 ::Step 1
 :Start
+Echo %manual_mode% | findstr "1" >nul && (CLS)
 Color %color_code%
 Set count=0
 Set timeout=0
-
-::Step 2
 For /f %%f in ('dir "%directory%" /b /s') do set /a count+=1
 
-::Step 3
+::Step 2
 :Randomizer
 Color %color_code%
-CLS
-echo %timeout% | findstr %timeout_max% >nul && (goto Error-Timed Out) || (echo Attempt %timeout%/%timeout_max% till Timeout...)
-::timeout /t 1 > nul
+Echo %timeout% | findstr %timeout_max% >nul && (goto Error-TimedOut) || (Echo Attempt %timeout%/%timeout_max% till Timeout...)
+::timeout 1 >nul
 Set /a timeout+=1
 Set /a randN=%random% %% %count% +1
 Set listN=0
 For /f "tokens=1* delims=:" %%I in ('dir "%directory%" /b /s^| findstr /n /r . ^| findstr /b "%randN%"') do set filename=%%J
-:check1
-echo %search_mode% | findstr "1" >nul && (goto Search_Mode1) || (goto check2)
-:check2
-echo %search_mode% | findstr "2" >nul && (goto Search_Mode2) || (goto check3)
-:check3
-echo %search_mode% | findstr "3" >nul && (goto Search_Mode3) || (goto check4)
-:check4
-echo %search_mode% | findstr "4" >nul && (goto Search_Mode4) || (goto check5)
-:check5
-echo %search_mode% | findstr "5" >nul && (goto Search_Mode5) || (goto Error-IncorrectNum)
+
+if %search_mode% LSS 1 (goto Error-IncorrectNum)
+if %search_mode% GTR 5 (goto Error-IncorrectNum)
+Echo %search_mode% | findstr "%search_mode%" >nul && (goto Search_Mode%search_mode%) || (goto Error-IncorrectNum)
 
 
 :Search_Mode1
-echo %filename% | findstr /i /c:%file_type1.1% /c:%file_type1.2% /c:%file_type1.3% /c:%file_type1.4% >nul && (goto Review) || (goto Randomizer)
+Echo %filename% | findstr /i "%file_image%" >nul && (goto Review) || (goto Randomizer)
 :Search_Mode2
-echo %filename% | findstr /i /c:%file_type2.1% /c:%file_type2.2% /c:%file_type2.3% /c:%file_type2.4% >nul && (goto Review) || (goto Randomizer)
+Echo %filename% | findstr /i "%file_video%" >nul && (goto Review) || (goto Randomizer)
 :Search_Mode3
-echo %filename% | findstr /i /c:%file_type3.1% /c:%file_type3.2% /c:%file_type3.3% /c:%file_type3.4% >nul && (goto Review) || (goto Randomizer)
+Echo %filename% | findstr /i "%file_music%" >nul && (goto Review) || (goto Randomizer)
 :Search_Mode4
-echo %filename% | findstr /i /c:%file_type1.1% /c:%file_type1.2% /c:%file_type1.3% /c:%file_type1.4% /c:%file_type2.1% /c:%file_type2.2% /c:%file_type2.3% /c:%file_type2.4% /c:%file_type3.1% /c:%file_type3.2% /c:%file_type3.3% /c:%file_type3.4% >nul && (goto Review) || (goto Randomizer)
+Echo %filename% | findstr /i "%file_media%" >nul && (goto Review) || (goto Randomizer)
 :Search_Mode5
+Echo %filename% | find /i "%file_all%" >nul && (goto Review) || (goto Randomizer)
 goto Review
 
-::Step 4
+::Step 3
 :Review
-For /f %%A in ("%filename%") do set filesize=%%~zA
-CLS
+Echo %filename% | find /v "%file_all%" >nul && (goto Randomizer)
+Echo %filename% | findstr /i "%file_filter%" >nul && (goto Error-InvalidFile)
+::For /f %%A in ("%filename%") do set filesize=%%~zA
 Start "" "%filename%"
 
 ::Info Pane
-Echo RandomFilePicker - Vue
+CLS
+::Echo %filesize%
+Echo %version%
 Echo -github/bandito52
-Echo.
 
 ::Choices
+Echo.
 Echo How do you want to continue?
+Echo.
+Echo OPTIONS:
 Echo.
 Echo %bind_randomizer% = Reroll for new file.
 Echo %bind_reload% = Update directory if you added new files.
@@ -110,34 +116,72 @@ Echo.
 Set timeout=0
 Set choice=
 Set /p choice= Choice:
-echo %bind_randomizer% | find /i "%choice%" >nul && goto Randomizer
-echo %bind_reload% | find /i "%choice%" >nul && goto Start
+Echo %bind_randomizer% | find /i "%choice%" >nul && goto Randomizer
+Echo %bind_reload% | find /i "%choice%" >nul && goto Start
 goto Randomizer
 
+:ManualQuestion
+CLS
+Color e
+Echo Heads up! You are in manual mode.
+Echo.
+Echo Enter the Search Mode you would like:
+Echo.
+timeout 1 >nul
+Echo 1 = Images
+Echo 2 = Videos
+Echo 3 = Music
+Echo 4 = Images, Videos, Music
+Echo 5 = Anything not filtered. (Check config)
+Echo.
+Echo.
+Echo If you want to disable this warning, check Config, set manual_mode to 0.
+Echo %search_mode% | findstr "5" >nul && (Echo.)
+Echo %search_mode% | findstr "5" >nul && (Echo You have "5" selected. Be warned that this will open anything such as other scripts and executables...)
+Set timeout=0
+Set /p choice= Choice:
+Set search_mode=%choice%
+Goto Start
 
-::Error Codes
+
+::####  Error Codes  ####
 
 :Error-IncorrectNum
 CLS
 Color C
-echo ###  ERROR  ###
-echo    Code: 400
-echo.
-echo Search Criteria is not Mode 1-5. CHECK CONFIG.
-echo.
-echo Program will close upon continuing
+Echo ###  ERROR  ###
+Echo    Code: 400
+Echo.
+Echo Search Criteria is not Mode 1-5. CHECK CONFIG.
+Echo.
+Echo Program will close upon continuing
 Pause
 exit
 
-:Error-Timed Out
+:Error-TimedOut
 CLS
 Color C
-echo ###  ERROR  ###
-echo    Code: 404
-echo.
-echo Randomizer has timed out after %timeout_max% shuffles. 
-echo Either file type does not exist or directory is too large to find it.
-echo.
-echo Program will close upon continuing
+Echo ###  ERROR  ###
+Echo    Code: 404
+Echo.
+Echo Randomizer has timed out after %timeout_max% shuffles. 
+Echo Either file type does not exist or directory is too large to find it, try again.
+Echo.
+Echo Program will close upon continuing
+Pause
+exit
+
+:Error-InvalidFile
+CLS
+Color C
+Echo ###  ERROR  ###
+Echo    Code: 403
+Echo.
+Echo Location: %filename%
+Echo.
+Echo File is an invalid type. 
+Echo Check config for invalid file types.
+Echo.
+Echo Program will close upon continuing
 Pause
 exit
