@@ -43,7 +43,7 @@ Title %version%
 	set file_video=.mp4 .mkv .mov .webm .avi .wmv .mpeg
 	::Music file types
 	set file_music=.mp3 .m4a .wav .wma .flac .aac .ogg
-	::Allowed file types or keywords.
+	::Allowed file types or keywords. CASE SENSITIVE
 	set allowed_filter=
 	::Blocked file types or keywords.
 	set blocked_filter=.exe
