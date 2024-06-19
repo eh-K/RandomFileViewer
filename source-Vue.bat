@@ -27,7 +27,7 @@ Title %version%
 	Set timeout_max=250
 	
 	::SET YOUR SEARCH CRITERIA
-	set search_mode=4
+	set search_mode=5
 	::1 = Images
 	::2 = Videos
 	::3 = Music
@@ -36,13 +36,15 @@ Title %version%
 	
 	::FILE TYPES - Add any file extensions you may find useful.
 	::Image file types
-	set file_image=.png .jpg .jpeg .webp
+	set file_image=.png .jpg .jpeg .webp .gif .bmp .tiff
 	::Video file types
-	set file_video=.mp4 .mkv .mov .webm
+	set file_video=.mp4 .mkv .mov .webm .avi .wmv .mpeg
 	::Music file types
-	set file_music=.mp3 .m4a .wav .wma
-	::Invalid file types or keywords to save you headache on avoiding certain files. Can be left empty.
-	set file_filter=.exe
+	set file_music=.mp3 .m4a .wav .wma .flac .aac .ogg
+	::Allowed file types or keywords. CASE SENSITIVE
+	set allowed_filter=
+	::Blocked file types or keywords.
+	set blocked_filter=.exe
 	
 ::####  END OF CONFIG  ####
 
@@ -66,6 +68,7 @@ For /f %%f in ('dir "%directory%" /b /s') do set /a count+=1
 
 ::Step 2
 :Randomizer
+CLS
 Color %color_code%
 Echo %timeout% | findstr %timeout_max% >nul && (goto Error-TimedOut) || (Echo Attempt %timeout%/%timeout_max% till Timeout...)
 ::timeout 1 >nul
@@ -93,8 +96,9 @@ goto Review
 
 ::Step 3
 :Review
+Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Randomizer)
 Echo %filename% | find /v "%file_all%" >nul && (goto Randomizer)
-Echo %filename% | findstr /i "%file_filter%" >nul && (goto Error-InvalidFile)
+Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Error-InvalidFile)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
 Start "" "%filename%"
 
