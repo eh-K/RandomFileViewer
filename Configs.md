@@ -29,6 +29,15 @@ Each key and phrase must have a space between them.
       set bind_reload=r reload
       set bind_randomizer=
 
+
+### Manual Mode ###
+Following v1.4.2, Manual Mode lets you choose what search mode you want upon each run.
+By Default, this is disabled.
+
+      set manual_mode=0
+      0 - Disabled
+      1 - Enabled
+
 ### Search Criteria  ###
 Following v1.4.1, you can choose what file types you want to open.
 
@@ -38,8 +47,11 @@ Following v1.4.1, you can choose what file types you want to open.
       ::3 = Music
       ::4 = Images, Videos, Music
       ::5 = Every possible file type (CAUTION: Will literally open anything)
+            v1.4.2
+            ::5 = Your preferred file type (CAUTION: Will literally open anything)
 
 Here is list of search criteria types:
+Pre v1.4.1
 
       ::Image file types
             set file_type1.1=.png
@@ -56,6 +68,17 @@ Here is list of search criteria types:
             set file_type3.2=.m4a
             set file_type3.3=.wav
             set file_type3.4=.wma
+
+v1.4.2 and beyond: 
+
+      ::Image file types
+	      set file_image=.png .jpg .jpeg .webp
+	::Video file types
+	      set file_video=.mp4 .mkv .mov .webm
+	::Music file types
+	      set file_music=.mp3 .m4a .wav .wma
+	::Invalid file types or keywords to save you headache on avoiding certain files. Can be left empty.
+	      set file_filter=.exe
 
 ### Timeout Search Limit  ###
 Following v1.4.1, you can set how many times you want the Randomizer to shuffle.
