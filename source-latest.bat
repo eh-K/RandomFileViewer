@@ -1,5 +1,5 @@
 @Echo Off
-set version=RandomFilePicker - v1.4.2
+set version=RandomFilePicker - v1.4.3
 Title %version%
 
 
@@ -36,15 +36,17 @@ Title %version%
 	::4 = Images, Videos, Music
 	::5 = Your preferred file type (CAUTION: Will literally open anything)
 	
-	::FILE TYPES - Add any file extensions you may find useful.
+	::FILTER - Add any file extensions you may find useful.
 	::Image file types
-	set file_image=.png .jpg .jpeg .webp
+	set file_image=.png .jpg .jpeg .webp .gif .bmp .tiff
 	::Video file types
-	set file_video=.mp4 .mkv .mov .webm
+	set file_video=.mp4 .mkv .mov .webm .avi .wmv .mpeg
 	::Music file types
-	set file_music=.mp3 .m4a .wav .wma
-	::Invalid file types or keywords to save you headache on avoiding certain files. Can be left empty.
-	set file_filter=.exe
+	set file_music=.mp3 .m4a .wav .wma .flac .aac .ogg
+	::Allowed file types or keywords.
+	set allowed_filter=
+	::Blocked file types or keywords.
+	set blocked_filter=.exe
 	
 ::####  END OF CONFIG  ####
 
@@ -91,7 +93,6 @@ if %search_mode% LSS 1 (goto Error-IncorrectNum)
 if %search_mode% GTR 5 (goto Error-IncorrectNum)
 Echo %search_mode% | findstr "%search_mode%" >nul && (goto Search_Mode%search_mode%) || (goto Error-IncorrectNum)
 
-
 :Search_Mode1
 Echo %filename% | findstr /i "%file_image%" >nul && (goto Review) || (goto Randomizer)
 :Search_Mode2
@@ -106,8 +107,9 @@ goto Review
 
 ::Step 3
 :Review
+Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Randomizer)
 Echo %filename% | find /v "%file_all%" >nul && (goto Randomizer)
-Echo %filename% | findstr /i "%file_filter%" >nul && (goto Error-InvalidFile)
+Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Error-InvalidFile)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
 CLS
 Start "" "%filename%"
