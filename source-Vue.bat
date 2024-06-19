@@ -27,7 +27,7 @@ Title %version%
 	Set timeout_max=250
 	
 	::SET YOUR SEARCH CRITERIA
-	set search_mode=5
+	set search_mode=4
 	::1 = Images
 	::2 = Videos
 	::3 = Music
