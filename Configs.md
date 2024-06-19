@@ -71,7 +71,7 @@ Pre v1.4.1
 
 v1.4.2 and beyond: 
 
-        ::Image file types
+	::Image file types
 	      set file_image=.png .jpg .jpeg .webp
 	::Video file types
 	      set file_video=.mp4 .mkv .mov .webm
