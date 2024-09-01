@@ -112,3 +112,13 @@ Here is the list of color codes:
     
 
 There are more but these about serve everyone.
+
+### Allow / Block Filter ###
+Following v1.4.3, you can strictly search key words or block key words.
+
+Set spaces between your words and any file types.
+
+	::Allowed file types or keywords.
+		set allowed_filter=screenshot 2024 family pet wedding .mp4
+	::Blocked file types or keywords.
+		set blocked_filter=.exe script 2020 therapy .png .gif
