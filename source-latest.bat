@@ -43,7 +43,7 @@ Title %version%
 	::Music file types
 		set file_music=.mp3 .m4a .wav .wma .flac .aac .ogg
 	::Allowed file types or keywords.
-		set allowed_filter=untitled pose
+		set allowed_filter=
 	::Blocked file types or keywords.
 		set blocked_filter=.exe
 	
