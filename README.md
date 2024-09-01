@@ -31,4 +31,5 @@ chinagreenelvis, whoever they may be, started this rabbit hole with sharing his 
 While I was searching for a way to randomly open any file in a folder, I found a link to his help-post.
 
 https://www.techguy.org/threads/solved-get-random-folder-from-directory-using-batch.1094849/
+
 https://web.archive.org/web/20240222204320/https://www.techguy.org/threads/solved-get-random-folder-from-directory-using-batch.1094849/
