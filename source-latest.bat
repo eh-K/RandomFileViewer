@@ -43,7 +43,7 @@ Title %version%
 	::Music file types
 		set file_music=.mp3 .m4a .wav .wma .flac .aac .ogg
 	::Allowed file types or keywords.
-		set allowed_filter=
+		set allowed_filter=untitled pose
 	::Blocked file types or keywords.
 		set blocked_filter=.exe
 	
@@ -54,7 +54,7 @@ Title %version%
 ::####  START OF SCRIPT  ####
 
 ::file_all prevents folders from being opened as a result. Directory is forced to contain a '.'
-set file_all=.
+set "file_all=."
 set file_media=%file_image% %file_video% %file_music%
 Color %color_code%
 Echo.
@@ -120,11 +120,11 @@ goto Review
 :Review
 Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Randomizer)
 Echo %filename% | findstr /i "%opp_filter%" >nul && (goto Randomizer)
-Echo %filename% | findstr /i "%allowed_filter%" >nul && (goto Present) || (goto Randomizer)
-Echo %filename% | find /v "%file_all%" >nul && (goto Present) || (goto Randomizer)
+Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Present)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
 
 :Present
+Echo %filename% | findstr /i "%file_all%" >nul || (goto Randomizer)
 CLS
 Start "" "%filename%"
 Echo (Step 3/3) - File selected and presented.
