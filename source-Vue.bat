@@ -100,13 +100,13 @@ Echo %filename% | find /i "%file_all%" >nul && (goto Review) || (goto Randomizer
 goto Review
 
 ::Step 3
-:Review
 Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Randomizer)
 Echo %filename% | findstr /i "%opp_filter%" >nul && (goto Randomizer)
-Echo %filename% | findstr /i "%allowed_filter%" >nul && (goto Present) || (goto Randomizer)
-Echo %filename% | find /v "%file_all%" >nul && (goto Present) || (goto Randomizer)
+Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Present)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
+
 :Present
+Echo %filename% | findstr /i "%file_all%" >nul || (goto Randomizer)
 Start "" "%filename%"
 
 ::Info Pane
