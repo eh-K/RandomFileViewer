@@ -120,7 +120,7 @@ goto Review
 :Review
 Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Randomizer)
 Echo %filename% | findstr /i "%opp_filter%" >nul && (goto Randomizer)
-Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Present)
+Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Randomizer)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
 
 :Present
