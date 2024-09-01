@@ -60,6 +60,9 @@ Echo %manual_mode% | findstr "1" >nul && (goto ManualQuestion) || (goto Start)
 
 ::Step 1
 :Start
+if %search_mode% LSS 1 (goto Error-IncorrectNum)
+if %search_mode% GTR 5 (goto Error-IncorrectNum)
+
 Echo %manual_mode% | findstr "1" >nul && (CLS)
 Color %color_code%
 Set count=0
@@ -71,14 +74,16 @@ For /f %%f in ('dir "%directory%" /b /s') do set /a count+=1
 CLS
 Color %color_code%
 Echo %timeout% | findstr %timeout_max% >nul && (goto Error-TimedOut) || (Echo Attempt %timeout%/%timeout_max% till Timeout...)
+Echo %search_mode% | findstr "1" >nul && (set opp_filter=%file_video% %file_music%)
+Echo %search_mode% | findstr "2" >nul && (set opp_filter=%file_image% %file_music%)
+Echo %search_mode% | findstr "3" >nul && (set opp_filter=%file_image% %file_video%)
+
 ::timeout 1 >nul
 Set /a timeout+=1
 Set /a randN=%random% %% %count% +1
 Set listN=0
 For /f "tokens=1* delims=:" %%I in ('dir "%directory%" /b /s^| findstr /n /r . ^| findstr /b "%randN%"') do set filename=%%J
 
-if %search_mode% LSS 1 (goto Error-IncorrectNum)
-if %search_mode% GTR 5 (goto Error-IncorrectNum)
 Echo %search_mode% | findstr "%search_mode%" >nul && (goto Search_Mode%search_mode%) || (goto Error-IncorrectNum)
 
 
@@ -96,10 +101,12 @@ goto Review
 
 ::Step 3
 :Review
-Echo %filename% | findstr /v "%allowed_filter%" >nul && (goto Randomizer)
-Echo %filename% | find /v "%file_all%" >nul && (goto Randomizer)
-Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Error-InvalidFile)
+Echo %filename% | findstr /i "%blocked_filter%" >nul && (goto Randomizer)
+Echo %filename% | findstr /i "%opp_filter%" >nul && (goto Randomizer)
+Echo %filename% | findstr /i "%allowed_filter%" >nul && (goto Present) || (goto Randomizer)
+Echo %filename% | find /v "%file_all%" >nul && (goto Present) || (goto Randomizer)
 ::For /f %%A in ("%filename%") do set filesize=%%~zA
+:Present
 Start "" "%filename%"
 
 ::Info Pane
@@ -156,7 +163,8 @@ Color C
 Echo ###  ERROR  ###
 Echo    Code: 400
 Echo.
-Echo Search Criteria is not Mode 1-5. CHECK CONFIG.
+Echo Search Mode is not Mode 1-5. CHECK CONFIG.
+Echo Current: %search_mode%
 Echo.
 Echo Program will close upon continuing
 Pause
@@ -170,21 +178,6 @@ Echo    Code: 404
 Echo.
 Echo Randomizer has timed out after %timeout_max% shuffles. 
 Echo Either file type does not exist or directory is too large to find it, try again.
-Echo.
-Echo Program will close upon continuing
-Pause
-exit
-
-:Error-InvalidFile
-CLS
-Color C
-Echo ###  ERROR  ###
-Echo    Code: 403
-Echo.
-Echo Location: %filename%
-Echo.
-Echo File is an invalid type. 
-Echo Check config for invalid file types.
 Echo.
 Echo Program will close upon continuing
 Pause
