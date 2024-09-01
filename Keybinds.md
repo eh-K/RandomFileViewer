@@ -7,7 +7,7 @@ Following v1.4, keybinds and terminology have changed completely. If you are usi
     set bind_delete=d del delete
     set bind_review=v review
     set bind_reload=r reload
-    set bind_randomizer=
+    set bind_randomizer= (REMOVED IN v1.4.4)
 
 
 ### Pre-v1.4 ###
