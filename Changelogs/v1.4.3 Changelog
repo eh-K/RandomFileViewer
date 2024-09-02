@@ -1,0 +1,13 @@
+### 1.4.3 - June 18, 2024 ###
+
+v1.4.3 adds more file types, and a new Allowed Filter to only have specific terms/extensions.
+
+--  Additions  --
+1. Media Types:
+	Added a few more file types for images, video, and music
+		  image = .gif .bmp .tiff
+		  video = .avi .wmv .mpeg
+		  music = .flac .aac .ogg
+
+2. Filters:
+	Added an Allow Filter. Add extensions or key words and Randomizer will check for it before opening.
