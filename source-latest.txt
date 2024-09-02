@@ -154,7 +154,7 @@ Set /p choice= Choice:
 Echo %bind_randomizer% | find /i "%choice%" >nul && goto Randomizer
 Echo %bind_delete% | find /i "%choice%" >nul && goto Deletion
 Echo %bind_reload% | find /i "%choice%" >nul && goto Start
-Echo %bind_open% | find /i "%choice%" >nul && goto Open
+Echo %bind_open% | find /i "%choice%" >nul && goto Present
 goto Randomizer
 
 :Deletion
