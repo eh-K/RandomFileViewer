@@ -1,0 +1,45 @@
+### 1.4 - April 4, 2024 ###
+
+v1.4 corrects a lot of redundancy, brings in new features, and improves flow.
+
+--  Additions  --
+1. Can now open:
+	Files with spaces in the name
+	Gifs
+	Photos that are super small such as 64x64 pixels. 
+
+2. Can now create your own keybinds! Simply edit the file in a text editor or Notepad.
+	The keybinds are at the top of the file. Each key or phrase must have a space between them.
+	Ex: "bind_delete=1 test bob d del sally sue"
+	Special characters are heavily limited by design. Recommend only a-z 0-9 characters.
+
+3. Can now set color of personal choice in the config section
+
+
+
+--  Changes  --
+1. All text color is now in Aqua. You can also change this at the top of the file.
+
+2. The Options Choice page now displays the keybinds.
+
+3. Removed the following:
+	 Redundant list of characters to check for auto skip(Fixed in v1.3.1)
+	 Redundant check for ENTER in line75. Pressing ENTER automatically proceeds...
+	 Some line spacing for looks.
+	 Details at the beginning (No one actually cares during use.)
+    File size message. Unnecessary and did not look clean.
+
+4. Renamed some steps and binds for better clarity:
+	Step Names:
+		Roller is now Randomizer
+	Keybinds:
+		view is now review
+		refresh is now reload
+		Keybind documentation will provide pre-v1.4 and v1.4+ binds.
+
+
+
+--  Fixes  --
+1. Delete bug was found and squashed. Have tested even more key options to ensure stability.
+	This fix will be pushed into previous versions.
+  Reorganized a few things so accidental deletions are no longer possible.
