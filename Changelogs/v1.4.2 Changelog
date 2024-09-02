@@ -1,0 +1,24 @@
+### 1.4.2 - June 18, 2024 ###
+
+v1.4.2 adds a manual mode, and a filter to prevent accidents such as other scripts/executables/keywords.
+
+--  Additions  --
+1. Manual Mode:
+	Disabled by default.
+	Allows you to manually set your search mode each time you run the script. 
+
+2. Filters:
+	Can filter out extensions such as ".exe", or ".py"
+	Can even filter out keywords such as "screenshot" or "wallpaper"
+	.exe is filtered by Default
+
+
+
+--  Changes  --
+1. Code Optimization
+	Cleaned up some redundancy and added simpler checks
+
+
+
+--  Fixes  --
+6. When search criteria is not specific enough, there was a chance for the script to open folders despite being told to only open files with extensions.
