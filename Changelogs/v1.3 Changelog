@@ -1,0 +1,5 @@
+###  v1.3 - April 3, 2024 ###
+
+  --  Changes  --  
+1. Added extra checks to prevent accidental deletions through typing a-z 0-9 characters. 
+2. Can now simply drop the file into a directory without needing to direct it!
