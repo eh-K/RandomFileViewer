@@ -1,5 +1,5 @@
 @Echo Off
-Title File Randomizer - v1.3
+Title File Randomizer - v1.3.1
 
 ::SET DIRECTORY HERE
 ::Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
@@ -7,7 +7,7 @@ mkdir "%~dp0"
 
 ::Titles
 Echo.
-Echo RandomFilePicker - v1.3  -  Overhauled and Improved
+Echo RandomFilePicker - v1.3.1  -  Overhauled and Improved
 Echo Original Credit: chinagreenelvis
 Echo Overhauled by bandito52
 Echo.
@@ -74,6 +74,8 @@ if '%choice%'=='v' goto Review
 if '%choice%'=='view' goto Review
 if '%choice%'=='r' goto Start
 if '%choice%'=='refresh' goto Start
+
+goto Roller
 
 :Deletion
 del %filename% | CLS
