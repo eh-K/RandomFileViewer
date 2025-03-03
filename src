@@ -1,14 +1,81 @@
 @Echo Off
+Title File Randomizer - v1.1
 
+::SET DIRECTORY HERE
+Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
+
+
+::Titles
+Echo.
+Echo RandomFilePicker - v1.1  -  Overhauled and Improved
+Echo Original Credit: chinagreenelvis
+Echo Overhauled by bandito52
+Echo.
+Echo Created: March 31, 2013
+Echo Updated: September 19, 2023
+Echo.
+
+
+::Step 1
 :Start
-set count=0
-for /f %%f in ('dir "C:\Users\echox\OneDrive\Pictures" /b') do set /a count+=1
-set /a randN=%random% %% %count% +1
-set listN=0
+Echo.
+Echo (Step 1/4) - Directory set.
+Set count=0
+Echo.
 
-for /f "tokens=1* delims=:" %%I in ('dir "%directory%" /b /s^| findstr /n /r . ^| findstr /b "%randN%"') do set filename=%%J
+::Step 2
+Echo (Step 2/4) - Checking Directory... Please wait a moment.
+For /f %%f in ('dir "%directory%" /b /s') do set /a count+=1
 
-:Found
-echo %filename%
+::Step 3
+:Roller
+Color 2
+CLS
+Echo.
+Echo (Step 3/4) - Randomizer choosing... Please wait a moment.
+Set /a randN=%random% %% %count% +1
+Set listN=0
+For /f "tokens=1* delims=:" %%I in ('dir "%directory%" /b /s^| findstr /n /r . ^| findstr /b "%randN%"') do set filename=%%J
 
-pause
+::Step 4
+:Review
+Color 6
+For /f %%A in ("%filename%") do set filesize=%%~zA
+CLS
+Start %filename%
+Echo (Step 4/4) - File selected and presented.
+
+::Info Pane
+Echo.
+Echo Location: %filename%
+Echo     Size: %filesize% bytes. 100,000 = 100KB / 1,000,000 = 1MB
+Echo.
+Echo.
+
+::Choices
+Echo How do you want to continue? Deletion is FINAL and PERMANENT.
+Echo.
+Echo OPTIONS:
+Echo.
+Echo DEL = Permanently delete.
+Echo V/VIEW = Open file again.
+Echo R/REFRESH = Update directory if you added new files.
+Echo Press ENTER = Reroll for new file.
+Echo.
+Set choice=
+Set /p choice= Choice:  
+if '%choice%'=='' goto Roller
+if '%choice%'=='del' goto Deletion
+if '%choice%'=='view' goto Review
+if '%choice%'=='refresh' goto Start
+
+:Deletion
+del %filename% | CLS
+Color c
+Echo.
+Echo.
+Echo File permanently deleted.
+Echo.
+Echo.
+Pause
+Goto Roller
