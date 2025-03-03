@@ -1,13 +1,12 @@
 @Echo Off
-Title File Randomizer - v1.1
+Title File Randomizer - v1.2
 
 ::SET DIRECTORY HERE
 Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
 
-
 ::Titles
 Echo.
-Echo RandomFilePicker - v1.1  -  Overhauled and Improved
+Echo RandomFilePicker - v1.2  -  Overhauled and Improved
 Echo Original Credit: chinagreenelvis
 Echo Overhauled by bandito52
 Echo.
@@ -57,7 +56,7 @@ Echo How do you want to continue? Deletion is FINAL and PERMANENT.
 Echo.
 Echo OPTIONS:
 Echo.
-Echo DEL = Permanently delete.
+Echo D/DEL/DELETE = Permanently delete.
 Echo V/VIEW = Open file again.
 Echo R/REFRESH = Update directory if you added new files.
 Echo Press ENTER = Reroll for new file.
@@ -65,9 +64,13 @@ Echo.
 Set choice=
 Set /p choice= Choice:  
 if '%choice%'=='' goto Roller
-if '%choice%'=='del' goto Deletion
-if '%choice%'=='view' goto Review
 if '%choice%'=='refresh' goto Start
+if '%choice%'=='d' goto Deletion
+if '%choice%'=='del' goto Deletion
+if '%choice%'=='delete' goto Deletion
+if '%choice%'=='v' goto Review
+if '%choice%'=='view' goto Review
+if '%choice%'=='r' goto Start
 
 :Deletion
 del %filename% | CLS
