@@ -1,23 +1,37 @@
 @Echo Off
-Title File Randomizer - v1.3.1
+Title File Randomizer - v1.4
 
-::SET DIRECTORY HERE
+
+::####  CONFIG SECTION  ####
+
+::CAN MANUALLY SET DIRECTORY HERE- Comment the other and vice versa
 ::Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
 mkdir "%~dp0"
 
+::KEY BINDS - Edit these lists to your liking
+
+set bind_delete=d del delete
+set bind_review=v review
+set bind_reload=r reload
+set bind_randomizer=
+
+::SET YOUR PREFERRED COLOR - List is on the documentation file on home page.
+set color_code= 3
+::####  END OF CONFIG  ####
+
+
+
 ::Titles
 Echo.
-Echo RandomFilePicker - v1.3.1  -  Overhauled and Improved
-Echo Original Credit: chinagreenelvis
-Echo Overhauled by bandito52
+Echo RandomFilePicker - v1.4
 Echo.
-Echo Created: March 31, 2013
-Echo Updated: April 3, 2024
+Echo -github/bandito52
 Echo.
-
+Goto Start
 
 ::Step 1
 :Start
+Color %color_code%
 Echo.
 Echo (Step 1/4) - Directory set.
 Set count=0
@@ -28,28 +42,26 @@ Echo (Step 2/4) - Checking Directory... Please wait a moment.
 For /f %%f in ('dir "%directory%" /b /s') do set /a count+=1
 
 ::Step 3
-:Roller
-Color 2
+:Randomizer
+Color %color_code%
 CLS
 Echo.
 Echo (Step 3/4) - Randomizer choosing... Please wait a moment.
 Set /a randN=%random% %% %count% +1
 Set listN=0
 For /f "tokens=1* delims=:" %%I in ('dir "%directory%" /b /s^| findstr /n /r . ^| findstr /b "%randN%"') do set filename=%%J
+Goto Review
 
 ::Step 4
 :Review
-Color 6
 For /f %%A in ("%filename%") do set filesize=%%~zA
 CLS
-Start %filename%
+Start "" "%filename%"
 Echo (Step 4/4) - File selected and presented.
 
 ::Info Pane
 Echo.
 Echo Location: %filename%
-Echo     Size: %filesize% bytes. 100,000 = 100KB / 1,000,000 = 1MB
-Echo.
 Echo.
 
 ::Choices
@@ -57,34 +69,24 @@ Echo How do you want to continue? Deletion is FINAL and PERMANENT.
 Echo.
 Echo OPTIONS:
 Echo.
-Echo D/DEL/DELETE = Permanently delete.
-Echo V/VIEW = Open file again.
-Echo R/REFRESH = Update directory if you added new files.
-Echo Press ENTER = Reroll for new file.
+Echo ENTER %bind_randomizer% = Reroll for new file.
+Echo %bind_delete% = Permanently delete.
+Echo %bind_review% = Open file again.
+Echo %bind_reload% = Update directory if you added new files.
 Echo.
-set list=a b c e f g h i j k l m n o p q s t u w x y z 0 1 2 3 4 5 6 7 8 9
 Set choice=
-Set /p choice= Choice:  
-if '%choice%'=='' goto Roller
-echo %list% | find /i "%choice%" >nul && goto Roller
-if '%choice%'=='d' goto Deletion
-if '%choice%'=='del' goto Deletion
-if '%choice%'=='delete' goto Deletion
-if '%choice%'=='v' goto Review
-if '%choice%'=='view' goto Review
-if '%choice%'=='r' goto Start
-if '%choice%'=='refresh' goto Start
-
-goto Roller
+Set /p choice= Choice:
+echo %bind_randomizer% | find /i "%choice%" >nul && goto Randomizer
+echo %bind_delete% | find /i "%choice%" >nul && goto Deletion
+echo %bind_review% | find /i "%choice%" >nul && goto Review
+echo %bind_reload% | find /i "%choice%" >nul && goto Start
+goto Randomizer
 
 :Deletion
 del %filename% | CLS
 Color c
 Echo.
-Echo.
 Echo File permanently deleted.
 Echo.
-Echo.
 Pause
-Goto Roller
-EXIT /B 0
+Goto Randomizer
