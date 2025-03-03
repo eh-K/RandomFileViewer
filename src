@@ -1,17 +1,18 @@
 @Echo Off
-Title File Randomizer - v1.2
+Title File Randomizer - v1.3
 
 ::SET DIRECTORY HERE
-Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
+::Set directory="C:\Users\echox\OneDrive\Pictures\All_Wallpapers"
+mkdir "%~dp0"
 
 ::Titles
 Echo.
-Echo RandomFilePicker - v1.2  -  Overhauled and Improved
+Echo RandomFilePicker - v1.3  -  Overhauled and Improved
 Echo Original Credit: chinagreenelvis
 Echo Overhauled by bandito52
 Echo.
 Echo Created: March 31, 2013
-Echo Updated: September 19, 2023
+Echo Updated: April 3, 2024
 Echo.
 
 
@@ -61,16 +62,18 @@ Echo V/VIEW = Open file again.
 Echo R/REFRESH = Update directory if you added new files.
 Echo Press ENTER = Reroll for new file.
 Echo.
+set list=a b c e f g h i j k l m n o p q s t u w x y z 0 1 2 3 4 5 6 7 8 9
 Set choice=
 Set /p choice= Choice:  
 if '%choice%'=='' goto Roller
-if '%choice%'=='refresh' goto Start
+echo %list% | find /i "%choice%" >nul && goto Roller
 if '%choice%'=='d' goto Deletion
 if '%choice%'=='del' goto Deletion
 if '%choice%'=='delete' goto Deletion
 if '%choice%'=='v' goto Review
 if '%choice%'=='view' goto Review
 if '%choice%'=='r' goto Start
+if '%choice%'=='refresh' goto Start
 
 :Deletion
 del %filename% | CLS
@@ -82,3 +85,4 @@ Echo.
 Echo.
 Pause
 Goto Roller
+EXIT /B 0
