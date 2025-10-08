@@ -1,5 +1,5 @@
 @Echo Off
-set version=RandomFilePicker - v1.5
+set version=RandomFileViewer - v1.5
 Title %version%
 
 
