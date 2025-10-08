@@ -1,4 +1,4 @@
-# RandomFilePicker
+# RandomFileViewer
 Simple bat file that will open, view, or play any random file within a directory. No directory setup required!
 
 Edit your config within the file. [CHANGE FILTER.](https://github.com/bandito52/RandomFilePicker/blob/main/Configs.md)
@@ -18,11 +18,6 @@ Place the file in your directory and simply open.
 [RandomFilePicker - Vue](https://github.com/bandito52/RandomFilePicker/releases/tag/Vue) has you covered!
 
 No options or menus.
-
-
-### Future Plans ###
-As of 2024, updates will slow down as there can only be so many features.
-Would like to expand this in another language someday as a fun project. Maybe an independent GUI.
 
 
 ### Credits ###
