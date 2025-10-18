@@ -1,1 +1,1 @@
-Source code for both windows and linux.
+Source code for both windows.
