@@ -1,11 +1,11 @@
 # RandomFileViewer
 Simple bat file that will open, view, or play any random file within a directory. No directory setup required!
 
-Edit your config within the file. [CHANGE FILTER.](https://github.com/bandito52/RandomFilePicker/blob/main/Configs.md)
+Edit your config within the file. [Config Documentation.](https://github.com/bandito52/RandomFilePicker/blob/main/Configs.md)
 
 Place the file in your directory and simply open.
 
-### Current Features ###
+### Current Features
     Delete - Permanently delete files.
     Review - Opens the file again if you had closed it.
     Reload - Refreshes directory if you have added new files.
@@ -14,13 +14,12 @@ Place the file in your directory and simply open.
     Custom Search Criteria.
     Custom Filters to block/allow executables/scripts/keywords.
 
-### Want a simpler version that strictly opens media content? ###
-[RandomFilePicker - Vue](https://github.com/eh-K/RandomFileViewer/blob/main/source/random-file-viewer-VUE.bat) has you covered!
+### Want to simply open media content? ###
+[RandomFilePicker - Vue](https://github.com/eh-K/RandomFileViewer/blob/main/source/random-file-viewer-VUE.bat) has you covered.
+> No options or menus.
 
-No options or menus.
 
-
-### Credits ###
+### Credits
 chinagreenelvis, whoever they may be, started this rabbit hole with sharing his code for what I call v1.0.
 
 While I was searching for a way to randomly open any file in a folder, I found a link to his help-post.
