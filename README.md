@@ -15,7 +15,7 @@ Place the file in your directory and simply open.
     Custom Filters to block/allow executables/scripts/keywords.
 
 ### Want a simpler version that strictly opens media content? ###
-[RandomFilePicker - Vue](https://github.com/bandito52/RandomFilePicker/releases/tag/Vue) has you covered!
+[RandomFilePicker - Vue](https://github.com/eh-K/RandomFileViewer/blob/main/source/random-file-viewer-VUE.bat) has you covered!
 
 No options or menus.
 
