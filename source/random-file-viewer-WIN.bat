@@ -56,7 +56,7 @@ Color %color_code%
 Echo.
 Echo %version%
 Echo.
-Echo -github/bandito52
+Echo -github/eh-K
 Echo.
 Echo.
 Echo %manual_mode% | findstr "1" >nul && (timeout 2 >nul)
